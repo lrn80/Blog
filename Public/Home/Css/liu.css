@@ -1,0 +1,64 @@
+
+
+body{
+    position: relative;
+}
+.liu1{
+    cursor: pointer;
+}
+
+.liu2{
+   width     : 500px;
+   height    : 400px;
+   display   : none;
+   background: #ffffff;
+   position  : fixed;
+   z-index   : 99999;
+   top       : -50px;
+   left      : 300px;
+   padding   : 15px;
+}
+.form-group{
+    margin-top: 15px;
+}
+.modal-body label {
+    display      : block;
+    max-width    : 100%;
+    margin-bottom: 5px;
+    font-size    : 120%;
+    font-weight  : 800;
+
+}
+.modal-body textarea{
+    
+    height       : 100px;
+    border-radius: 5px;
+    width        : 480px;
+}
+.modal-body input{
+
+    height       : 30px ;
+    border-radius: 5px;
+    width        : 480px;
+}
+.btn-primary { color: #fff; background-color: #3071a9; border-color: #285e8e; }
+.btn { display: inline-block; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; -ms-touch-action: manipulation; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; background-image: none; border: 1px solid transparent; border-radius: 4px; }
+.modal-footer{
+    float : right;
+    margin: 10px;
+}
+.close{
+    color     : black;
+    text-align: right;
+    cursor    : pointer;
+}
+
+.screen{
+    position  : fixed;
+    top       : 0;
+    left      : 0;
+    background: #000;
+    z-index   : 9998;
+    opacity   : 0.3;
+    display   : none;
+}

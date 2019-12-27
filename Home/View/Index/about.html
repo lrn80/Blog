@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
+<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./Public/Home/Css/base.css" rel="stylesheet">
+<link href="./Public/Home/Css/index.css" rel="stylesheet">
+<link href="./Public/Home/Css/m.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="/"></a></div>
+  <nav id="nav">
+    <ul>
+      <li><a href="?c=Index&a=index">网站首页</a></li>
+      <li><a href="#">我的相册</a></li>
+      <li><a href="#">我的日记</a></li>
+      <li><a href="?c=Index&a=about">关于名人</a></li>
+      <li><a href="?c=Index&a=gbook">我要留言</a></li>
+      <li><a href="?c=info&a=info">内容页</a></li>     
+    </ul>
+  </nav>   
+  <script>
+window.onload = function ()
+{
+var obj=null;
+var As=document.getElementById('nav').getElementsByTagName('a');
+obj = As[0];
+for(i=1;i<As.length;i++){if(window.location.href.indexOf(As[i].href)>=0)
+obj=As[i];}
+obj.id='selected'
+}
+</script> 
+</header>
+<div class="mnav">
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="share.html">相册</a></li>
+      <li><a href="list.html">日记</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gbook.html">留言</a></li>
+      <li><a href="info.html">内容页</a></li>
+      <li><a href="infopic.html">内容页</a></li>
+    </ul>
+  </div>
+<article>
+  <div class="l_box">
+    <div class="about_me">
+      <h2>关于名人</h2>
+      <ul>
+        <i><img src="./Public/Home/images/xu.jpg"></i>
+        <p><b>徐小平</b>，徐小平，真格基金创始人、中国著名天使投资人。曾荣获“2010年最受尊敬天使投资人”，“2011年度天使投资人”，“2012年最佳天使基金”，“2013年最佳天使投资人”，“2013年中关村天使投资领军人物”等称号。</p>
+      </ul>
+    </div>
+    <div class="wdxc">
+      <h2>图片欣赏</h2>
+      <ul>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce1.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce2.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce3.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce4.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce5.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce6.jpg"></a></li>
+      </ul>
+    </div>
+    <div class="guanzhu">
+      <h2>联系作者</h2>
+      <ul>
+        <img src="./Public/Home/images/wxx.jpg">
+      </ul>
+    </div>
+  </div>
+  <div class="r_box">
+     <ul class="about">
+      <p>徐小平还担任中国天使会主席、中国青年天使会荣誉主席、中国证监会基金业协会天使投资专业委员会主席等职务。<br /><br />
+        他创立的真格基金在2014-2015年连续荣获清科“中国股权投资年度最佳天使投资机构”称号。徐小平先生还兼任欧美同学会2005委员会秘书长。<br />
+            <br />
+        <img src="./Public/Home/images/my_xiangce8.jpg"> 
+        在创办真格基金之前，徐小平先生是中国最大教育培训机构新东方教育科技集团（NYSE: EDU）的联合创始人，与俞敏洪、王强并称为新东方“三驾马车”。<br /><br />
+        他在留学、教育、职业、创业等有关青年奋斗成长问题上的演讲、访谈和著述，对青年学生尤其是留学生群体有着广泛的影响。因为他在新东方的工作，徐小平先生在2006年被南方人物周刊评选为“中国魅力50人”之一，2004年入选福布斯杂志“中国名人榜Top 100”，2016年入选美国福布斯杂志“全球最佳创投人”榜单（Midas List）<br />
+        <br />
+
+  
+     </ul>
+  </div>
+</article>
+<footer>
+  <p>lrn<a href="http://www.baidu.com" target="_blank">个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+
+</body>
+</html>

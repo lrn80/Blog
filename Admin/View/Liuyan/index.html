@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="./Public/Admin/Css/public.css" rel="stylesheet" type="text/css" />
+<title>留言管理</title>
+<script type="text/javascript">
+//定义JS的删除函数
+function confirmDel(id){
+	//询问是否要删除
+	if(window.confirm("你真的要删除吗？")){
+		//跳转到删除页面
+		location.href = "?c=Liu&a=delete&id="+id;
+	}
+}
+</script>
+</head>
+
+<body>
+<!--导航栏-->
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="border">
+	<tr class="topbg"><td>留言管理</td></tr>
+	<tr class="tdbg">
+		<td height="30">&nbsp;&nbsp;
+			<a href="?c=Liu&a=index">管理首页</a>
+		</td>
+	</tr>
+</table>
+<!--留言列表-->
+<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" class="border">
+<tr class="title" align="center">
+	<td>编号</td>
+	<td>内容</td>
+	<td>作者</td>
+	<td>email</td>
+	<td>发布时间</td>
+	<td>操作选项</td>
+</tr>
+<{foreach $Liu as $Lius}>
+<tr class="tdbg" align="center">
+	<td><{$Lius.id}></td>
+	<td align="left">
+		<a target="_blank" href="#"><{$Lius.comment}></a>
+	</td>
+	<td><{$Lius.Cus_name}></td>
+	<td><{$Lius.Cus_email}></td>
+	<td><{$Lius.addtime|date_format:'%Y-%m-%d %H:%M:%S'}></td>
+	<td>
+		<a href="javascript:void(0)" onClick="confirmDel(<{$Lius.id}>)">删除</a>
+	</td>
+</tr>
+<{/foreach}>
+<!--留言分页-->
+<tr class="tdbg">
+	<td colspan="7" align="center"><{$pageStr}></td>
+</tr>
+</table>
+</body>
+</html>

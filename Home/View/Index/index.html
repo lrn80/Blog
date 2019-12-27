@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人博客</title>
+<meta name="keywords" content="个人博客" />
+<meta name="description" content="个人博客" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./Public/Home/Css/base.css" rel="stylesheet">
+<link href="./Public/Home/Css/index.css" rel="stylesheet">
+<link href="./Public/Home/Css/m.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="logo"><a href="/"></a></div>
+  <nav id="nav">
+    <ul>
+        <li><a href="?c=Index&a=index">网站首页</a></li>
+        <li><a href="#">我的相册</a></li>
+        <li><a href="#">我的日记</a></li>
+        <li><a href="?c=Index&a=about">关于名人</a></li>
+        <li><a href="?c=Index&a=gbook">我要留言</a></li>
+        <li><a href="?c=info&a=info">内容页</a></li>     
+    </ul>
+  </nav>   
+  <script>
+window.onload = function ()
+{
+var obj=null;
+var As=document.getElementById('nav').getElementsByTagName('a');
+obj = As[0];
+for(i=1;i<As.length;i++){if(window.location.href.indexOf(As[i].href)>=0)
+obj=As[i];}
+obj.id='selected'
+}
+</script> 
+</header>
+<div class="mnav">
+    <ul>
+      <li><a href="?c=Index&a=index">首页</a></li>
+      <li><a href="?c=Index&a=share">相册</a></li>
+      <li><a href="?c=Index&a=list">日记</a></li>
+      <li><a href="?c=Index&a=about">关于</a></li>
+      <li><a href="?c=Index&a=gbook">留言</a></li>
+      <li><a href="?c=Index&a=info">内容页</a></li>
+    </ul>
+  </div>
+<article>
+  <div class="l_box">
+    <div class="about_me">
+      <h2>关于我</h2>
+      <ul>
+        <i><img src="./Public/Home/images/luo.jpg"></i>
+        <p><b>lrn</b>，李若宁，男</p>
+          <p>籍贯：河北省定州市</p>
+          <p> 爱好：平时除了敲代码喜欢听电台FM、读课外书、慢跑</p>
+          <p> Email:lrnjy@qq.com</p>
+      </ul>
+    </div>
+    <div class="wdxc">
+      <h2>图片欣赏</h2>
+      <ul>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce1.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce2.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce3.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce4.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce5.jpg"></a></li>
+        <li><a href="/"><img src="./Public/Home/images/my_xiangce6.jpg"></a></li>
+      </ul>
+    </div>
+    <div class="search">
+      <form action="?c=Index&a=index" method="POST" name="searchform" id="searchform">
+        <input name="title" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+      <!-- <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">--> 
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="fenlei">
+      <h2>文章分类</h2>
+      <ul>
+          <{foreach $categorys as $category}>
+          <li>
+            <a href="?c=Index&a=index&category_id=<{$category.id}>">
+         <!--     <{str_repeat("--",$category.level*2)}>-->
+              <{$category.classname}>
+            </a>(<font color='red'><{$category.records}></font>)
+          </li>
+          <{/foreach}>
+      </ul>
+    </div>
+    <div class="tuijian">
+      <h2>文章归档</h2>
+      <ul>
+          <{foreach $months as $month}>
+          <li>
+            <a href="?c=index&a=index&addate=<{$month.months}>"><{$month.months}></a> 
+            (<font color=red><{$month.records}></font>)
+          </li>
+          <{/foreach}>
+      </ul>
+    </div>
+    <div class="links">
+      <h2>友情链接</h2>
+      <ul>
+          <{foreach $links as $link}>
+          <a  target="_blank" href="<{$link.url}>"><{$link.domain}></a>
+          <{/foreach}>
+        </ul>
+  
+    </div>
+    <div class="guanzhu">
+      <h2>联系作者</h2>
+      <ul>
+        <img src="./Public/Home/images/wxx.jpg">
+      </ul>
+    </div>
+  </div>
+  <{foreach $articles as $article}>
+  <div class="r_box">
+  <li><i><a href="/"><img src="./Public/Home/images/my_xiangce7.jpg"></a></i> 
+      <h3><a href="?c=info&a=info_point_title&id=<{$article.id}>"><{$article.title}></a></h3>
+      <p><{$article.content|truncate:'450':'......'}></p>
+    </li>
+    </div>
+  <{/foreach}>
+  <div class="pagelist"><a class="allpage"><b><{$pageStr.pages}></b></a>&nbsp;&nbsp;
+    <a href="#" class="curPage"><{$pageStr.page}>/<{$pageStr.pages}></a>&nbsp;&nbsp;
+    <{$pageStr.first}>&nbsp;&nbsp;
+    <{$pageStr.prev}> &nbsp;&nbsp;
+    <{$pageStr.next}>&nbsp;&nbsp;
+    <{$pageStr.last}>
+  </div>
+</article>
+<footer>
+  <p>Design by <a href="http://www.baidu.com" target="_blank">个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+
+</body>
+</html>

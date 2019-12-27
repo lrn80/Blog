@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人博客</title>
+<meta name="keywords" content="个人博客" />
+<meta name="description" content="个人博客" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./Public/Home/Css/base.css" rel="stylesheet">
+<link href="./Public/Home/Css/index.css" rel="stylesheet">
+<link href="./Public/Home/Css/info.css" rel="stylesheet">
+<link href="./Public/Home/Css/m.css" rel="stylesheet">
+<script src="./Public/Home/Js/jquery.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header>
+  <div class="logo"><a href="/"></a></div>
+  <nav id="nav">
+    <ul>
+      <li><a href="?c=Index&a=index">网站首页</a></li>
+      <li><a href="#">我的相册</a></li>
+      <li><a href="#">我的日记</a></li>
+      <li><a href="?c=Index&a=about">关于名人</a></li>
+      <li><a href="?c=Index&a=gbook">我要留言</a></li>
+      <li><a href="?c=info&a=info">内容页</a></li>                                           
+    </ul>
+  </nav>
+  <script>
+window.onload = function ()
+{
+var obj=null;
+var As=document.getElementById('nav').getElementsByTagName('a');
+obj = As[0];
+for(i=1;i<As.length;i++){if(window.location.href.indexOf(As[i].href)>=0)
+obj=As[i];}
+obj.id='selected'
+}
+
+</script> 
+  <script type="text/javascript">
+
+$(document).ready(function(e) {			
+	t = $('.guanzhu').offset().top;
+
+	mh = $('.infosbox').height();
+	fh = $('.guanzhu').height();
+
+	$(window).scroll(function(e){
+		s = $(document).scrollTop();	
+		if(s > t - 10){
+			$('.guanzhu').css('position','fixed');
+	         $('.guanzhu').css('background','fff');
+			if(s + fh > mh){
+				$('.guanzhu').css('top',mh-s-fh+'px');	
+			}				
+		}else{
+			$('.guanzhu').css('position','');
+		}
+		
+	})
+});
+
+</script> 
+</header>
+<div class="mnav">
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="share.html">相册</a></li>
+      <li><a href="list.html">日记</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gbook.html">留言</a></li>
+      <li><a href="info.html">内容页</a></li>
+      <li><a href="infopic.html">内容页</a></li>
+    </ul>
+  </div>
+<article>
+  <div class="l_box">
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="fenlei">
+      <h2>文章分类</h2>
+      <ul>
+          <{foreach $categorys as $category}>
+          <li>
+            <a href="?c=info&a=info&category_id=<{$category.id}>">
+         <!--     <{str_repeat("--",$category.level*2)}>-->
+              <{$category.classname}>
+            </a>(<font color='red'><{$category.records}></font>)
+          </li>
+          <{/foreach}>
+      </ul>
+    </div>
+    <div class="tuijian">
+        <h2>文章归档</h2>
+        <ul>
+            <{foreach $months as $month}>
+            <li>
+              <a href="javascript:void(0)"><{$month.months}></a> 
+              (<font color=red><{$month.records}></font>)
+            </li>
+            <{/foreach}>
+        </ul>
+    </div>
+    <div class="tuijian">
+      <h2>点击排行</h2>
+      <ul>
+          <{foreach $PaiHang as $PaiHan}>
+          <li><a href="?c=info&a=info_point_title&id=<{$PaiHan.id}>""><{$PaiHan.title}></a></li>
+          <{/foreach}>
+      </ul>
+    </div>
+    <div class="cloud">
+      <h2>标签云</h2>
+      <ul>
+        <a href="/">html5</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+    <div class="guanzhu">
+      <h2>联系作者</h2>
+      <ul>
+        <img src="./Public/Home/images/wxx.jpg">
+      </ul>
+    </div>
+  </div>
+ 
+  <div class="infosbox">
+    <div class="newsview">
+      <h3 class="news_title"><{$article.title}></h3>
+      <div class="bloginfo">
+        <ul>
+          <li class="author">作者：<a href="/"><{$article.name}> </a></li>
+          <li class="lmname"><a href="/">学无止境</a></li>
+          <li class="timer">时间:(<{$article.addate|date_format:'%Y-%m-%d %H:%M'}>)</li>
+          <li class="view"><{$article.read1}>人已阅读</li>
+        </ul>
+      </div>
+      <div class="tags"><a href="#" target="_blank">个人博客</a> &nbsp; <a href="#" target="_blank">放眼观世界</a></div>
+      <div class="news_con">
+        	<{$article.content}>
+        <img alt="" src="./Public/Home/images/biN.jpg"><br>
+        </div>
+         <!--页面分享-->
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"right","bdTop":"112.5"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <!--页面分享-->
+    </div>
+    <div class="share">
+      <p class="diggit"><a href="?c=info&a=praise&id=<{$article.id}>">很赞哦!</a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script><{$article.praise}></b>)</p>
+    </div>
+
+    <div class="nextinfo">
+        <ul>
+            <li>上一篇：
+              <{if !empty($arr[0])}>
+              <a href="?c=info&a=info_point_title&id=<{$arr[0]['id']}>"><{$arr[0]['title']}></a>
+              <{else}>
+              没有啦！
+              <{/if}>
+            </li>
+            <li>下一篇：
+              <{if !empty($arr[1])}>
+              <a href="?c=info&a=info_point_title&id=<{$arr[1]['id']}>"><{$arr[1]['title']}></a>
+              <{else}>
+              没有啦！
+              <{/if}>
+            </li>
+          </ul>
+    </div>
+    <div class="news_pl">
+      <h2>文章评论</h2>
+      <ul>
+        <div class="gbko"> </div>
+      </ul>
+    </div>
+  </div>
+</article>
+<footer>
+  <p>Design by <a href="http://www.baidu.com" target="_blank">个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>
