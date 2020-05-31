@@ -134,40 +134,40 @@ final class UserController extends BaseController{
 	//用户登录验证方法
 	public function loginCheck()
 	{
-		//(1)获取表单提交值
-		$username = $_POST["username"];
-		$password = md5(md5($_POST["password"]));
-//        $password = $_POST["password"];
-		$verify   = $_POST["verify"];
-
-		//(2)判断验证输入的是否正确(不区分大小写)
-		if(strtolower($verify)!=strtolower($_SESSION['captcha']))
-		{
-			$this->jump("验证码不正确！","?c=User&a=login");
-		}
-
-		//(3)判断用户的账号是否正确
-		$user = UserModel::getInstance()->fetchOne("username='$username' and password='$password'");
-		if(empty($user))
-		{
-			$this->jump("用户名或密码不正确！","?c=User&a=login");
-		}
-
-		//(4)更新用户资料：最后登录的IP、最后登录时间、登录总次数
-		$data['last_login_ip']		= $_SERVER['REMOTE_ADDR'];
-		$data['last_login_time'] 	= time();
-		$data['login_times']		= $user['login_times']+1;
-		if(!UserModel::getInstance()->update($data,$user['id']))
-		{
-			$this->jump("用户信息更新失败！","?c=User&a=login");
-		}
-
-		//(5)将用户状态信息写入SESSION
-		$_SESSION['uid']		= $user['id'];
-		$_SESSION['username'] 	= $username;
-
-		//(6)跳转到网站后台管理首页
-		$this->jump("恭喜！{$username}用户登录成功，正在跳转...","?c=Index&a=index");
+//		//(1)获取表单提交值
+//		$username = $_POST["username"];
+//		$password = md5(md5($_POST["password"]));
+////        $password = $_POST["password"];
+//		$verify   = $_POST["verify"];
+//
+//		//(2)判断验证输入的是否正确(不区分大小写)
+//		if(strtolower($verify)!=strtolower($_SESSION['captcha']))
+//		{
+//			$this->jump("验证码不正确！","?c=User&a=login");
+//		}
+//
+//		//(3)判断用户的账号是否正确
+//		$user = UserModel::getInstance()->fetchOne("username='$username' and password='$password'");
+//		if(empty($user))
+//		{
+//			$this->jump("用户名或密码不正确！","?c=User&a=login");
+//		}
+//
+//		//(4)更新用户资料：最后登录的IP、最后登录时间、登录总次数
+//		$data['last_login_ip']		= $_SERVER['REMOTE_ADDR'];
+//		$data['last_login_time'] 	= time();
+//		$data['login_times']		= $user['login_times']+1;
+//		if(!UserModel::getInstance()->update($data,$user['id']))
+//		{
+//			$this->jump("用户信息更新失败！","?c=User&a=login");
+//		}
+//
+//		//(5)将用户状态信息写入SESSION
+//		$_SESSION['uid']		= $user['id'];
+//		$_SESSION['username'] 	= $username;
+//
+//		//(6)跳转到网站后台管理首页
+//		$this->jump("恭喜！{$username}用户登录成功，正在跳转...","?c=Index&a=index");
 	}
 
 	//用户退出方法

@@ -1,8 +1,8 @@
 #### 前言
 这个页面是自己初学PHP之后学习到了MVC开发思想后做了一个简单的Blog,其中包括前端页面，以及后台管理同，在其中主要用的知识PHP+Mysql+Smarty结合MVC思想。
 - Demo体验地址：  
-前端：https://xy.lrnjy.club/Blog5/index.php
-后端：https://xy.lrnjy.club/Blog5/admin.php
+前端：https://xy.liruoning.cn/Blog5/index.php
+后端：https://xy.liruoning.cn/Blog5/admin.php
 #### 学到了什么
 其中包括：  
 - 关于我：
@@ -16,7 +16,7 @@
 通过年和月分类排序，查出每个月具有几篇文章进行文章归档的数据展示
 - 文章列表分页：  
   下图便是分页的截图
-![](http://xy.lrnjy.club/images/blog5-1.png)
+![](http://xy.liruoning.cn/images/blog5-1.png)
 实现思路：封装一个分页类    
 先封装一个URl请求的 例如：?c=Index&a=index&page=  
 求出分页的总页数（利用PHP的ceil函数求出）  
@@ -25,4 +25,4 @@
 - 后台管理员的登陆注册：  
 登陆界面首先有  首先管理员需要登陆验证,通过账号密码在数据库查找相应的账号密码，如果查找出来了数据则可以登录并且将用户的信息存储在session中。登陆界面的验证码，通过GD库的函数生成验证码开始存入session中当用户登录的时候从session中取出进行判断输入的是否正确如果不正确跳转到登陆界面并提示验证码错误。
 
-![](http://xy.lrnjy.club/images/blog5-2.png)
+![](http://xy.liruoning.cn/images/blog5-2.png)
